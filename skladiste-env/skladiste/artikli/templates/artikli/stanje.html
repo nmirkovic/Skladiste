@@ -1,0 +1,27 @@
+<h1>Stanje skladišta</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Artikl</th>
+      <th>Lokacija</th>
+      <th>Jedinica mjere</th>
+      <th>Količina</th>
+      <th>Datum</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stavka in stavke %}
+    <tr>
+      <td>{{ stavka.artikl_id.naziv_artikla }}</td>
+      <td>{{ stavka.lokacija_id.naziv_lokacije }}</td>
+      <td>{{ stavka.jedinica_mjere_id.naziv_mjere }}</td>
+      <td>{{ stavka.kolicina }}</td>
+      <td>{{ stavka.datum }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{% url 'artikli:preuzmi_stanje' %}" class="btn btn-primary"
+  >Preuzmi stanje</a
+>

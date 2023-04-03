@@ -1,0 +1,9 @@
+{% if lista_artikala %}
+<ul>
+  {% for artikl in lista_artikala %}
+  <li><a href="/artikli/{{ artikl.id }}/">{{ artikl.naziv_artikla }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Nema artikala.</p>
+{% endif %}

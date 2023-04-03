@@ -1,0 +1,40 @@
+<h1>Unos novog stanja skladišta</h1>
+<form method="POST">
+  {% csrf_token %}
+  <div>
+    <label for="artikl_id">Artikl:</label>
+    <select id="artikl_id" name="artikl_id">
+      {% for artikl in artikli %}
+      <option value="{{ artikl.id }}">{{ artikl.naziv_artikla }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label for="lokacija_id">Lokacija:</label>
+    <select style="width: 10%" id="lokacija_id" name="lokacija_id">
+      {% for lokacija in lokacije %}
+      <option value="{{ lokacija.id }}">{{ lokacija.naziv }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label for="jedinica_mjere_id">Jedinica mjere:</label>
+    <select id="jedinica_mjere_id" name="jedinica_mjere_id">
+      {% for jedinica_mjere in jedinice_mjere %}
+      <option value="{{ jedinica_mjere.id }}">
+        {{ jedinica_mjere.naziv_mjere }}
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label for="kolicina">Količina:</label>
+    <input type="number" id="kolicina" name="kolicina" required min="0" />
+  </div>
+  <div>
+    <label for="datum">Datum:</label>
+    <input type="date" id="datum" name="datum" required placeholder="{{ {% now
+    "m-d-Y" %} }} " />
+  </div>
+  <button type="submit">Spremi</button>
+</form>
